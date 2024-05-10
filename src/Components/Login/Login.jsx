@@ -1,6 +1,35 @@
 import { Link } from "react-router-dom";
 import login from "../../../public/login.jpg";
+// import SocialLogin from "../../socialProvider/SocialLogin";
+// import { useContext } from "react";
+// import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import SocialLogin from "../../socialProvider/SocialLogin";
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  // const location = useLocation();
+  // const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    signIn(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content  lg:flex-row-reverse">
@@ -9,7 +38,7 @@ const Login = () => {
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <h1 className="text-4xl text-center mt-10 font-bold">Login now!</h1>
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-xl font-bold">Email</span>
@@ -17,9 +46,11 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
+                name="email"
                 className="input input-bordered"
-                required
+                {...register("email", { required: true })}
               />
+              {errors.email && <span>This field is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -28,9 +59,11 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="password"
+                name="password"
                 className="input input-bordered"
-                required
+                {...register("password", { required: true })}
               />
+              {errors.email && <span>This field is required</span>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
@@ -52,6 +85,7 @@ const Login = () => {
               Register
             </Link>
           </div>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

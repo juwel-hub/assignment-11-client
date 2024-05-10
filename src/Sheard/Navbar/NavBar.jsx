@@ -1,7 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../public/logo.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const navInfo = (
     <>
       <li className="text-xl hover:text-white hover:bg-orange-400 font-bold">
@@ -114,11 +119,33 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navInfo}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <a className="btn bg-orange-400 text-xl font-bold text-white">
-            Login
-          </a>
-        </Link>
+        {user ? (
+          <div className="flex items-center">
+            <a id="my-anchor-element">
+              <img
+                className="w-10 rounded-full mr-3"
+                src={user.photoURL}
+                alt=""
+              />
+            </a>
+            <Tooltip
+              anchorSelect="#my-anchor-element"
+              content={user.displayName}
+            />
+            <button
+              className="btn bg-orange-400 text-xl font-bold text-white "
+              onClick={logOut}
+            >
+              SignUp
+            </button>
+          </div>
+        ) : (
+          <Link to="/login">
+            <a className="btn bg-orange-400 text-xl font-bold text-white">
+              Login
+            </a>
+          </Link>
+        )}
       </div>
     </div>
   );
