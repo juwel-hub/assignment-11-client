@@ -1,36 +1,77 @@
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../../public/logo.jpg";
 
 const NavBar = () => {
   const navInfo = (
     <>
-      <li>
+      <li className="text-xl hover:text-white hover:bg-orange-400 font-bold">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isActive ? "active" : isPending ? "pending" : ""
+            isActive
+              ? "bg-orange-400 "
+              : isPending
+              ? "loading loading-spinner loading-lg"
+              : ""
           }
         >
           <a>Home</a>
         </NavLink>
       </li>
 
-      <li>
-        <NavLink to="/availableFood">
+      <li className="text-xl hover:text-white hover:bg-orange-400 font-bold">
+        <NavLink
+          to="/availableFood"
+          className={({ isActive, isPending }) =>
+            isActive
+              ? "bg-orange-400"
+              : isPending
+              ? "loading loading-spinner loading-lg"
+              : ""
+          }
+        >
           <a>Available Food</a>
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/addFood">
+      <li className="text-xl hover:text-white hover:bg-orange-400 font-bold">
+        <NavLink
+          to="/addFood"
+          className={({ isActive, isPending }) =>
+            isActive
+              ? "bg-orange-400"
+              : isPending
+              ? "loading loading-spinner loading-lg"
+              : ""
+          }
+        >
           <a>Add Food</a>
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/manageMyFood">
+      <li className="text-xl hover:text-white hover:bg-orange-400 font-bold">
+        <NavLink
+          to="/manageMyFood"
+          className={({ isActive, isPending }) =>
+            isActive
+              ? "bg-orange-400"
+              : isPending
+              ? "loading loading-spinner loading-lg"
+              : ""
+          }
+        >
           <a>Manage My Food</a>
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/myFoodRequest">
+      <li className="text-xl hover:text-white hover:bg-orange-400 font-bold">
+        <NavLink
+          to="/myFoodRequest"
+          className={({ isActive, isPending }) =>
+            isActive
+              ? "bg-orange-400 "
+              : isPending
+              ? "loading loading-spinner loading-lg"
+              : ""
+          }
+        >
           <a>My Food Request</a>
         </NavLink>
       </li>
@@ -63,6 +104,7 @@ const NavBar = () => {
             {navInfo}
           </ul>
         </div>
+        <img className="w-14 rounded-full" src={logo} alt="" />
         <Link to="/" className="btn btn-ghost text-xl md:text-4xl font-bold ">
           Delicious
           <span className="text-orange-400 ">Food</span>

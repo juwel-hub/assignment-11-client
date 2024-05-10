@@ -8,11 +8,13 @@ import AvailableFood from "../../Components/AvailableFood/AvailableFood";
 import AddFood from "../../Components/AddFood/AddFood";
 import ManageMyFood from "../../Components/ManageMyFood/ManageMyFood";
 import MyFoodRequest from "../../Components/MyFoodRequest/MyFoodRequest";
+import Error from "../../Components/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "/registration",
+        path: "/register",
         element: <Registration></Registration>,
       },
     ],
