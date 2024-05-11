@@ -10,6 +10,7 @@ import ManageMyFood from "../../Components/ManageMyFood/ManageMyFood";
 import MyFoodRequest from "../../Components/MyFoodRequest/MyFoodRequest";
 import Error from "../../Components/Error/Error";
 import FeatureDetails from "../../Components/FeatureFoodCard/FeatureDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
       {
         path: "/featureDetails/:id",
         loader: () => fetch("http://localhost:5000/featureFood"),
-        element: <FeatureDetails></FeatureDetails>,
+        element: (
+          <PrivateRoute>
+            <FeatureDetails></FeatureDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },
