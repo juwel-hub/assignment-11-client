@@ -1,6 +1,12 @@
 // import React, { useState } from "react";
 
+import { useMutation } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+
 function AddFood() {
+  const { user } = useContext(AuthContext);
   // const [formData, setFormData] = useState({
   //   foodName: "",
   //   foodImage: "",
@@ -21,6 +27,16 @@ function AddFood() {
   //   });
   // };
 
+  // const foodMutation = useMutation((information) => {
+  //   return fetch("http://localhost:5000/foods", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(information),
+  //   }).then((res) => res.json());
+  // });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -32,8 +48,9 @@ function AddFood() {
     const additionalNotes = form.additionalNotes.value;
     const donatorImage = form.donatorImage.value;
     const donatorName = form.foodName.value;
-    const donatorEmail = form.donatorEmail.value;
-    const informations = {
+    const foodStatus = form.foodStatus.value;
+    const email = user.email;
+    const information = {
       foodName,
       foodImage,
       foodQuantity,
@@ -41,10 +58,31 @@ function AddFood() {
       expireDateTime,
       additionalNotes,
       donatorImage,
-      donatorEmail,
+      foodStatus,
+      email,
       donatorName,
     };
-    console.log(informations);
+    console.log(information);
+
+    fetch("http://localhost:5000/addFoods", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(information),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "success!",
+            text: "Data added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
 
   return (
@@ -118,7 +156,8 @@ function AddFood() {
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
-
+          </div>
+          <div className="w-[50%]">
             <div className="mb-4">
               <label
                 htmlFor="expireDateTime"
@@ -133,10 +172,7 @@ function AddFood() {
                 required
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
               />
-            </div>
-          </div>
-          <div className="w-[50%]">
-            {" "}
+            </div>{" "}
             <div className="mb-4">
               <label
                 htmlFor="additionalNotes"
@@ -176,21 +212,6 @@ function AddFood() {
                 type="text"
                 id="donatorName"
                 name="donatorName"
-                required
-                className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="donatorEmail"
-                className="block font-medium text-gray-700"
-              >
-                Donator Email:
-              </label>
-              <input
-                type="email"
-                id="donatorEmail"
-                name="donatorEmail"
                 required
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
               />
