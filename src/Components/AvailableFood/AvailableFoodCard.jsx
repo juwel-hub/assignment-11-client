@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const AvailableFoodCard = ({ food }) => {
   const {
+    _id,
     foodName,
     donatorImage,
     donatorName,
@@ -9,7 +12,6 @@ const AvailableFoodCard = ({ food }) => {
     foodStatus,
     pickupLocation,
     additionalNotes,
-    email,
   } = food;
   return (
     <div className="card bg-base-100 border">
@@ -17,6 +19,7 @@ const AvailableFoodCard = ({ food }) => {
         <img src={foodImage} alt="Shoes" className="rounded-xl" />
       </figure>
       <div className="card-body ">
+        <p className="text-orange-400">{foodStatus}</p>
         <h2 className="card-title font-bold text-3xl">{foodName}</h2>
         <p className="text-xl">
           <span className=" font-semibold mr-3">Quantity:</span>
@@ -43,12 +46,12 @@ const AvailableFoodCard = ({ food }) => {
           </p>
         </div>
         <div className="card-actions flex items-center justify-end">
-          {/* <Link
-            to={`/featureDetails/${_id}`}
+          <Link
+            to={`/singleFoodDetails/${_id}`}
             className="btn font-bold text-white text-xl bg-orange-400"
           >
             View Details
-          </Link> */}
+          </Link>
         </div>
       </div>
     </div>

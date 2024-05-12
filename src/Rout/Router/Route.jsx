@@ -11,12 +11,13 @@ import MyFoodRequest from "../../Components/MyFoodRequest/MyFoodRequest";
 import Error from "../../Components/Error/Error";
 import FeatureDetails from "../../Components/FeatureFoodCard/FeatureDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SingleFoodDetails from "../../Components/AvailableFood/SingleFoodDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement: <Error></Error>,
+    // errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -56,6 +57,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <FeatureDetails></FeatureDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/singleFoodDetails/:id",
+        loader: () => fetch("http://localhost:5000/addFoods"),
+        element: (
+          <PrivateRoute>
+            <SingleFoodDetails></SingleFoodDetails>
           </PrivateRoute>
         ),
       },
