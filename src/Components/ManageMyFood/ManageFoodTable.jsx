@@ -1,6 +1,15 @@
-const ManageFoodTable = ({ food }) => {
-  const { foodImage, foodName, expireDateTime, pickupLocation, foodQuantity } =
-    food;
+import { useState } from "react";
+
+const ManageFoodTable = ({ food, handleDelete }) => {
+  const [modal, setModal] = useState(false);
+  const {
+    _id,
+    foodImage,
+    foodName,
+    expireDateTime,
+    pickupLocation,
+    foodQuantity,
+  } = food;
   return (
     <tbody>
       {/* row 1 */}
@@ -21,12 +30,20 @@ const ManageFoodTable = ({ food }) => {
         <td>{pickupLocation}</td>
         <td>{foodQuantity}</td>
         <th>
-          <button className="btn bg-orange-400 text-white btn-xs">
+          <button
+            onClick={() => setModal(true)}
+            className="btn bg-orange-400 text-white btn-xs"
+          >
             Update
           </button>
         </th>
         <th>
-          <button className="btn bg-red-400 text-white btn-xs">Delete</button>
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn bg-red-400 text-white btn-xs"
+          >
+            Delete
+          </button>
         </th>
       </tr>
     </tbody>

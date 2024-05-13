@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import SocialLogin from "../../socialProvider/SocialLogin";
-import Swal from "sweetalert2";
+
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
