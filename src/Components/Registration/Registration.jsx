@@ -1,5 +1,5 @@
 import registerpic from "../../../public/register.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
@@ -7,8 +7,8 @@ import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
 
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // console.log(info);
   const {
@@ -24,9 +24,9 @@ const Registration = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res);
-        // if (res.user) {
-        //   navigate(location?.state ? location.state : "/");
-        // }
+        if (res.user) {
+          navigate(location?.state ? location.state : "/");
+        }
       })
       .catch((error) => {
         console.error(error);

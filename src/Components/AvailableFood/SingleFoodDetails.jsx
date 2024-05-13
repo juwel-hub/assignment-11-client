@@ -29,6 +29,7 @@ const SingleFoodDetails = () => {
       <div className="hero-content flex-col gap-6 lg:flex-row">
         <img src={foodImage} className="md:w-[500px] rounded-lg shadow-2xl" />
         <div>
+          <p className="text-orange-300">{foodStatus}</p>
           <h1 className="text-5xl my-3 font-bold">{foodName}</h1>
           <p className="text-xl ">
             <span className=" font-semibold mr-3">Quantity:</span>

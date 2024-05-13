@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AvailableFoodCard from "./AvailableFoodCard";
 
 const AvailableFood = () => {
-  const [availableFoods, setAvailableFoods] = useState();
+  const [availableFoods, setAvailableFoods] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/addFoods")

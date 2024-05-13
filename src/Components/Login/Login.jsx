@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../../public/login.jpg";
 // import SocialLogin from "../../socialProvider/SocialLogin";
 // import { useContext } from "react";
@@ -7,10 +7,11 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import SocialLogin from "../../socialProvider/SocialLogin";
+import Swal from "sweetalert2";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -23,6 +24,10 @@ const Login = () => {
     const { email, password } = data;
     signIn(email, password)
       .then((res) => {
+        if (res.user) {
+          navigate(location.state ? location.state : "/");
+        }
+
         console.log(res);
       })
       .catch((error) => {
