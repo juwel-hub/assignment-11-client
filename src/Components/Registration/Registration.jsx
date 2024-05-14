@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
@@ -34,6 +35,9 @@ const Registration = () => {
   };
   return (
     <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <title>deliciousFood|Registration</title>
+      </Helmet>
       <div className="hero-content  ">
         <div className="text-center lg:text-left">
           <img className="md:w-[400px]" src={registerpic} alt="" />

@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 function AddFood() {
   const { user } = useContext(AuthContext);
@@ -87,6 +88,9 @@ function AddFood() {
 
   return (
     <div className=" min-h-screen w-full mx-auto  my-8 p-6 bg-slate-200 rounded-lg shadow-md">
+      <Helmet>
+        <title>deliciousFood|addFood</title>
+      </Helmet>
       <h2 className="text-2xl font-semibold mb-4">Add Food</h2>
       <form onSubmit={handleSubmit}>
         <div className="md:flex items-center justify-center gap-5">

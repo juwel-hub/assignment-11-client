@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import SocialLogin from "../../socialProvider/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -37,6 +38,9 @@ const Login = () => {
 
   return (
     <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <title>deliciousFood|Login</title>
+      </Helmet>
       <div className="hero-content  lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <img className="lg:w-[400px] md:w-[400px]" src={login} alt="" />

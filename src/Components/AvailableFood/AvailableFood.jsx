@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AvailableFoodCard from "./AvailableFoodCard"; // Assuming you have a component for rendering food cards
+import { Helmet } from "react-helmet-async";
 
 const AvailableFoods = () => {
   const [availableFoods, setAvailableFoods] = useState([]);
@@ -39,6 +40,9 @@ const AvailableFoods = () => {
 
   return (
     <div className="my-10">
+      <Helmet>
+        <title>deliciousFood|availableFood</title>
+      </Helmet>
       <div className="flex flex-1  justify-center">
         <h1 className="text-2xl font-bold text-center bg-slate-200 mb-8  py-3 w-[500px] rounded-lg ">
           User Added Food Available Here

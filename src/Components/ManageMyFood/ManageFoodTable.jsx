@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ManageFoodTable = ({ food, handleDelete }) => {
   const [modal, setModal] = useState(false);
@@ -12,6 +13,9 @@ const ManageFoodTable = ({ food, handleDelete }) => {
   } = food;
   return (
     <tbody>
+      <Helmet>
+        <title>deliciousFood|ManageFoodTable</title>
+      </Helmet>
       {/* row 1 */}
       <tr>
         <td>
