@@ -24,7 +24,7 @@ const FeaturedFood = () => {
         This is my Featured section in this section we represent many <br />
         type of food that very testy and healthy.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5">
+      <div className="grid m-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5">
         {featureItem?.map((item) => (
           <FeatureFoodCard key={item.id} item={item}></FeatureFoodCard>
         ))}

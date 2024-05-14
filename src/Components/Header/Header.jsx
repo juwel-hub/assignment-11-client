@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div
-      className="hero min-h-screen bg-base-200"
+      className="hero min-h-screen bg-base-200 "
       style={{
         backgroundImage: "url(https://i.ibb.co/zGsHKXs/images.jpg)",
       }}

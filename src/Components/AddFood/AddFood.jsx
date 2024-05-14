@@ -48,7 +48,7 @@ function AddFood() {
     const expireDateTime = form.expireDateTime.value;
     const additionalNotes = form.additionalNotes.value;
     const donatorImage = form.donatorImage.value;
-    const donatorName = form.foodName.value;
+    const donatorName = form.donatorName.value;
     const foodStatus = form.foodStatus.value;
     const email = user.email;
     const information = {
