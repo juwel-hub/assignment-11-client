@@ -19,7 +19,7 @@ const FeatureDetails = () => {
     additional_notes,
     donator,
   } = detailInfo;
-  console.log(data);
+  // console.log(data);
   return (
     <div className="hero min-h-screen bg-base-200 my-10">
       <div className="hero-content flex-col gap-6 lg:flex-row">

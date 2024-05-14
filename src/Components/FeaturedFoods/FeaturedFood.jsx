@@ -1,19 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import FeatureFoodCard from "../FeatureFoodCard/FeatureFoodCard";
+import { Link } from "react-router-dom";
 
 const FeaturedFood = () => {
   const [featureItem, setFeatureItem] = useState();
   useQuery({
     queryKey: ["featureFood"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/featureFood`);
+      const res = await fetch(
+        `https://assignment-11-server-kappa-khaki.vercel.app/featureFood`
+      );
       const data = await res.json();
       setFeatureItem(data);
       // console.log(data);
     },
   });
-  console.log(featureItem);
+  // console.log(featureItem);
   return (
     <div className="mt-10">
       <h1 className="text-4xl font-bold text-center">Featured Food</h1>
@@ -25,6 +28,13 @@ const FeaturedFood = () => {
         {featureItem?.map((item) => (
           <FeatureFoodCard key={item.id} item={item}></FeatureFoodCard>
         ))}
+      </div>
+      <div className="flex items-center justify-center">
+        <Link to="/availableFood">
+          <a href="" className="btn text-xl text-white bg-amber-400">
+            Show All
+          </a>
+        </Link>
       </div>
     </div>
   );

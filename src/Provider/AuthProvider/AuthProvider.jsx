@@ -36,17 +36,25 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://assignment-11-server-kappa-khaki.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log("response", res.data);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://assignment-11-server-kappa-khaki.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });

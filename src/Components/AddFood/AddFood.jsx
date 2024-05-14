@@ -28,7 +28,7 @@ function AddFood() {
   // };
 
   // const foodMutation = useMutation((information) => {
-  //   return fetch("http://localhost:5000/foods", {
+  //   return fetch("https://assignment-11-server-kappa-khaki.vercel.app/foods", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -62,9 +62,9 @@ function AddFood() {
       email,
       donatorName,
     };
-    console.log(information);
+    // console.log(information);
 
-    fetch("http://localhost:5000/addFoods", {
+    fetch("https://assignment-11-server-kappa-khaki.vercel.app/addFoods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ function AddFood() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "success!",
@@ -86,7 +86,7 @@ function AddFood() {
   };
 
   return (
-    <div className=" min-h-screen w-full mx-auto  mt-8 p-6 bg-white rounded-lg shadow-md">
+    <div className=" min-h-screen w-full mx-auto  my-8 p-6 bg-slate-200 rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Add Food</h2>
       <form onSubmit={handleSubmit}>
         <div className="md:flex items-center justify-center gap-5">

@@ -53,7 +53,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/featureDetails/:id",
-        loader: () => fetch("http://localhost:5000/featureFood"),
+        loader: () =>
+          fetch(
+            "https://assignment-11-server-kappa-khaki.vercel.app/featureFood"
+          ),
         element: (
           <PrivateRoute>
             <FeatureDetails></FeatureDetails>
@@ -62,7 +65,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/singleFoodDetails/:id",
-        loader: () => fetch("http://localhost:5000/addFoods"),
+        loader: () =>
+          fetch("https://assignment-11-server-kappa-khaki.vercel.app/addFoods"),
         element: (
           <PrivateRoute>
             <SingleFoodDetails></SingleFoodDetails>
