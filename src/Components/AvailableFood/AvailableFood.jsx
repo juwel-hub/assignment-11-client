@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AvailableFoodCard from "./AvailableFoodCard"; // Assuming you have a component for rendering food cards
 import { Helmet } from "react-helmet-async";
 
 const AvailableFoods = () => {
+  const [toggleClas, setToggleClass] = useState(true);
   const [availableFoods, setAvailableFoods] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("asc"); // Set initial sort order to ascending
 
+  const handleLayout = () => {
+    setToggleClass();
+  };
   useEffect(() => {
     fetch("https://assignment-11-server-kappa-khaki.vercel.app/addFoods")
       .then((res) => res.json())
@@ -76,8 +80,17 @@ const AvailableFoods = () => {
         >
           Sorting By Expiry Date ({sortOrder.toUpperCase()})
         </button>
+        <button onClick={() => handleLayout(false)} className="btn">
+          Change Layout
+        </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div
+        className={
+          toggleClas
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            : "grid grid-cols-2 gap-5"
+        }
+      >
         {sortedFoods
           .filter((food) => food.foodStatus !== "Requested")
           .map((food) => (
