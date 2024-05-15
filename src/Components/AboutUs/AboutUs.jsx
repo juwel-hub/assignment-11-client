@@ -1,6 +1,11 @@
 const AboutUs = () => {
   return (
-    <div className="bg-slate-200 my-10">
+    <div
+      data-aos="fade-right"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+      className="bg-slate-200 my-10"
+    >
       <h1 className="text-4xl font-bold text-center my-5 pt-5"> About Us</h1>
       <div className="md:flex items-center gap-3 justify-between px-5 w-full">
         <div className="w-2/4">

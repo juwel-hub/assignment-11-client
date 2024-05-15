@@ -12,7 +12,11 @@ const FeatureFoodCard = ({ item }) => {
     donator,
   } = item;
   return (
-    <div className="card bg-base-100 border">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+      className="card bg-base-100 border"
+    >
       <figure className="px-10 pt-10">
         <img src={food_image} alt="Shoes" className="rounded-xl" />
       </figure>
@@ -37,7 +41,7 @@ const FeatureFoodCard = ({ item }) => {
         </p>
         <div className="flex items-center justify-between gap-10">
           <img
-            className="w-20 h-20 rounded-full"
+            className="w-10 h-10 rounded-full"
             src={donator.donator_image}
             alt=""
           />

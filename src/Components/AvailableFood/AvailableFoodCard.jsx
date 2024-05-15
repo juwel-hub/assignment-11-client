@@ -39,7 +39,7 @@ const AvailableFoodCard = ({ food }) => {
           {expireDateTime}
         </p>
         <div className="md:flex items-center justify-between gap-10">
-          <img className="w-20 h-20 rounded-full" src={donatorImage} alt="" />
+          <img className="w-10 h-10 rounded-full" src={donatorImage} alt="" />
           <p className="text-xl font-bold">
             <span className=" font-semibold mr-3">Donar Name:</span>
             {donatorName}

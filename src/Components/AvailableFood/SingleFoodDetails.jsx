@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import {
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 
@@ -8,6 +13,8 @@ const SingleFoodDetails = () => {
   const [foodDetailsInfo, setFoodDetailsInfo] = useState({});
   const details = useLoaderData();
   console.log(details);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const { id } = useParams();
 
@@ -58,9 +65,9 @@ const SingleFoodDetails = () => {
     // console.log(information);
 
     fetch(
-      `https://assignment-11-server-kappa-khaki.vercel.app/singleFoodUpdate${_id}`,
+      `https://assignment-11-server-kappa-khaki.vercel.app/singleFoodUpdate/${_id}`,
       {
-        method: "put",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -69,15 +76,31 @@ const SingleFoodDetails = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "success!",
-            text: "Data added successfully",
-            icon: "success",
-            confirmButtonText: "Cool",
-          });
+        console.log(data);
+        if (data.acknowledged) {
+          fetch(
+            `https://assignment-11-server-kappa-khaki.vercel.app/requestedFood`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: user.uid,
+                ...information,
+              }),
+            }
+          )
+            .then((res) => res.json())
+            .then((data2) => {
+              if (data2.acknowledged) {
+                navigate("/myFoodRequest");
+              }
+            });
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
   return (
@@ -130,7 +153,7 @@ const SingleFoodDetails = () => {
           </button>
           <dialog id={`my_modal_${_id}`} className="modal">
             <div className="modal-box">
-              <div className=" min-h-screen w-full mx-auto  my-8 p-6 bg-slate-200 rounded-lg shadow-md">
+              <div className="  w-full mx-auto  my-8 p-6 bg-slate-200 rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold mb-4">Add Food</h2>
                 <form onSubmit={handleSingleFood}>
                   <div className="md:flex items-center justify-center gap-5">

@@ -2,8 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import FeatureFoodCard from "../FeatureFoodCard/FeatureFoodCard";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const FeaturedFood = () => {
+  AOS.init();
   const [featureItem, setFeatureItem] = useState();
   useQuery({
     queryKey: ["featureFood"],
@@ -19,8 +22,10 @@ const FeaturedFood = () => {
   // console.log(featureItem);
   return (
     <div className="mt-10">
-      <h1 className="text-4xl font-bold text-center">Featured Food</h1>
-      <p className="my-3 text-center">
+      <h1 data-aos="fade-right" className="text-4xl font-bold text-center">
+        Featured Food
+      </h1>
+      <p data-aos="fade-left" className="my-3 text-center">
         This is my Featured section in this section we represent many <br />
         type of food that very testy and healthy.
       </p>

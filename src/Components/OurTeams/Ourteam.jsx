@@ -11,7 +11,12 @@ const Ourteam = () => {
         connect our team please contact
       </p>
       <div className="md:flex m-3 items-center gap-5 justify-around">
-        <div className="border border-orange-300">
+        <div
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          className="border border-orange-300"
+        >
           <img
             src="https://i.ibb.co/dcXfVNW/man-isolated-showing-emotions-end-gestures.png"
             alt=""
@@ -30,7 +35,12 @@ const Ourteam = () => {
             </a>
           </div>
         </div>
-        <div className="border border-orange-300 my-3">
+        <div
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          className="border border-orange-300 my-3"
+        >
           <img
             src="https://i.ibb.co/hZ9VRXx/young-handsome-man-wearing-casual-tshirt-blue-background-happy-face-smiling-with-crossed-arms-lookin.png"
             alt=""
@@ -49,7 +59,12 @@ const Ourteam = () => {
             </a>
           </div>
         </div>
-        <div className="border border-orange-300">
+        <div
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          className="border border-orange-300"
+        >
           <img
             src="https://i.ibb.co/7JTmbB2/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background.png"
             alt=""
@@ -68,7 +83,12 @@ const Ourteam = () => {
             </a>
           </div>
         </div>
-        <div className="border border-orange-300 mt-3">
+        <div
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          className="border border-orange-300 mt-3"
+        >
           <img
             src="https://i.ibb.co/Hpd7FzC/inside-portrait-confident-young-man-white-clothes-posing-with-charming-smile-isolated-wall.png"
             alt=""
