@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "Food_name": "Spaghetti Carbonara",
+    "image": "https://i.ibb.co/5cxqQ0v/cooked-italian-pasta-with-shrimps-inside-brown-plate-with-cutlery-wood.jpg",
+    "title": "Classic Italian Pasta",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "Food_name": "Margherita Pizza",
+    "image": "https://i.ibb.co/qJLjZNx/top-view-delicious-pizza-indoors.jpg",
+    "title": "Traditional Neapolitan Pizza",
+    "rating": 4.5
+  },
+  {
+    "id": 3,
+    "Food_name": "Chicken Biryani",
+    "image": "https://i.ibb.co/mX7QnWC/close-up-appetizing-ramadan-meal.jpg",
+    "title": "Spicy Indian Rice Dish",
+    "rating": 4.7
+  },
+  {
+    "id": 4,
+    "Food_name": "Sushi Platter",
+    "image": "https://i.ibb.co/SdgndhX/top-view-sushi-set-with-soy-sauce-chopsticks-wooden-serving-board.jpg",
+    "title": "Assorted Sushi",
+    "rating": 4.9
+  }
+]
